@@ -1,11 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_mysqldb import MySQL
 app =  Flask(__name__)
-app.config['MYSQL_HOST']='AccessInfoDB'
+app.config['MYSQL_HOST']='127.0.0.1'
 app.config['MYSQL_USER']='root'
-app.config['MYSQL_PASSWORD']='prueba'
+app.config['MYSQL_PASSWORD']='pruebaw'
 app.config['MYSQL_DB']='mecon'
-app.config['MYSQL_PORT'] = 3306
+app.config['MYSQL_PORT'] = 13306
 mysql = MySQL(app)
 
 app.secret_key = 'meconkey'
@@ -30,7 +30,7 @@ def agregar_info():
         recursos = request.form['recursos']
         observaciones = request.form['observaciones']
     cur = mysql.connection.cursor()
-    cur.execute('INSERT INTO requerimientos(n_servicio,id_jur,ff,credito,recursos,observaciones) VALUES (%s, %s, %s, %s, %s, %s)',{n_servicio,id_jur,ff,credito,recursos,observaciones})
+    cur.execute("INSERT INTO requerimientos (n_servicio, id_jur, ff, credito, recursos, observaciones ) VALUES (%s, %s, %s, %s, %s, %s)",{n_servicio, id_jur, ff, credito, recursos, observaciones})
     mysql.connection.commit()
     flash('Se generó un nuevo registro')
     return redirect(url_for('Index'))
