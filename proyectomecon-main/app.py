@@ -22,17 +22,19 @@ def Index():
 
 @app.route('/agregar_info', methods=['POST'])
 def agregar_info():
-    if request.method == 'POST':
-        n_servicio = request.form['n_servicio']
-        id_jur = request.form['id_jur']
-        ff = request.form['ff']
-        credito = request.form['credito']
-        recursos = request.form['recursos']
-        observaciones = request.form['observaciones']
+    n_servicio = request.form['n_servicio']
+    id_jur = request.form['id_jur']
+    ff = request.form['ff']
+    credito = request.form['credito']
+    recursos = request.form['recursos']
+    observaciones = request.form['observaciones']
+    sql = 'INSERT INTO requerimientos (n_servicio, id_jur, ff, credito, recursos, observaciones ) VALUES (%s, %s, %s, %s, %s, %s)'
+    values = (n_servicio,id_jur,ff,credito,recursos,observaciones)
     cur = mysql.connection.cursor()
-    cur.execute("INSERT INTO requerimientos (n_servicio, id_jur, ff, credito, recursos, observaciones ) VALUES (%s, %s, %s, %s, %s, %s)",{n_servicio, id_jur, ff, credito, recursos, observaciones})
+    cur.execute(sql, values)
     mysql.connection.commit()
     flash('Se generó un nuevo registro')
+    
     return redirect(url_for('Index'))
 
 @app.route('/editar_info/<id>')
