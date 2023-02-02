@@ -1,0 +1,50 @@
+{% extends 'diseño.html'%}
+
+{% block body %}
+
+<form action="/update/{{requerimiento.0}}" method="post">
+
+    <div class="row">
+    <input type="text" name="id_jur" placeholder="Jurisdicción" value="requerimiento.1">
+    </div>
+    
+    <div class="row">
+    <input type="text" name="n_servicio" placeholder="Servicio" value="requerimiento.2">
+    </div>
+    
+    <input type="text" name="objeto" placeholder="Objeto" value="requerimiento.3">
+    <div class="row">
+    
+    <div class="row">
+    <input type="text" name="rubro" placeholder="Rubro" value="requerimiento.4">
+    </div>
+    
+    <div class="row">
+    <input type="text" name="ff" placeholder="FF" value="requerimiento.5">
+    </div>
+    
+    <div class="row">
+    <input type="text" name="credito" placeholder="Crédito" value="requerimiento.6">
+    </div>
+
+    <div class="row">
+    <input type="text" name="recurso" placeholder="Recurso" value="requerimiento.7">
+    </div>
+    
+    <div class="row">
+    <input type="text" name="observaciones" placeholder="Observaciones" value="requerimiento.8">
+    </div>
+    
+    <input type="text" name="smp" placeholder="SMP" value="requerimiento.9">
+    <div class="row">
+    
+    <div class="row">
+    <input type="text" name="expediente" placeholder="Expediente" value="requerimiento.10">
+    </div>
+
+
+    <button type="submit">Cargar</button>
+    
+    </form>
+
+{% endblock %} 
