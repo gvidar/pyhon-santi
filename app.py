@@ -92,4 +92,4 @@ def delete_inf(id):
 if __name__=='__main__':
  
     app.run(debug=True) 
-Footer
+#commit
